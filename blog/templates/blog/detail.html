@@ -1,0 +1,32 @@
+{% extends "layout/basic.html" %}
+
+{% block meta %}
+    <meta name="description" content="{{ post.metadesc }}">
+    <meta name="keywords" content="{{ post.metakey }}">
+{% endblock %}
+
+{% block title %}{{ post.category_name }}: {{ post.title }}{% endblock %}
+
+{% block header %}<h1>{{ post.title }}</h1>{% endblock %}
+
+{% block content %}
+    <div class="article-detail">
+        <div class="article-detail-image">
+            {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}" />
+            {% endif %}
+        </div>
+        <small>Категория: {{ post.category_name }}</small>
+        <br />
+        <small>{{ post.publish_up|date:"d.m.Y" }}</small>
+        <div class="article-detail-text">{{ post.fulltext | safe }}</div>
+        {% if post.tags.all %}
+        <div class="article-detail-tags">
+            Теги:&nbsp;
+            {% for tag in post.tags.all %}
+            <a href="/blog/?tag={{ tag.id }}">{{ tag.name }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

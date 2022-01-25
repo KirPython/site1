@@ -1,0 +1,46 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}{{ current_category.name }}{% endblock %}
+
+{% block header %}<h1>{{ current_category.name }}</h1>{% endblock %}
+
+{% if not items %}
+    <div>Пока здесь ничего нет...</div>
+{% else %}
+    {% block content %}
+        {% for item in items %}
+            <div class="article">
+                <h2>{{ item.title }}</h2>
+                <small>{{ item.publish_up|date:"d.m.Y" }}</small>
+                <div class="article-thumb-image">
+                    {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="{{ item.title }}" />
+                    {% endif %}
+                </div>
+                <div class="article-introtext">{{ item.introtext | safe }}</div>
+                <span class="read-more"><a href="{{ item.id }}/">Читать далее...</a></span>
+                {% if item.tags.all %}
+                <div class="article-tags">
+                    Теги:&nbsp;
+                    {% for tag in item.tags.all %}
+                    <a href="/blog/?tag={{ tag.id }}">{{ tag.name }}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endblock %}
+    {% block pagination %}
+        {% if page.has_previous or page.has_next %}
+        <div class="pagination">
+            {% if page.has_previous %}
+                <a href="?page={{ page.previous_page_number }}">&lt;&lt;</a>&nbsp; &nbsp;
+            {% endif %}
+            стр.{{ page.number }} из {{ page.paginator.num_pages }}
+            {% if page.has_next %}
+                &nbsp;&nbsp;<a href="?page={{ page.next_page_number }}">&gt;&gt;</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    {% endblock %}
+{% endif %}

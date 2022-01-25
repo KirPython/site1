@@ -1,0 +1,89 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+body {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    margin: 0 auto;
+    padding: 0 10px;
+    max-width: 980px;
+    color: #333;
+    font-size: 16px;
+    font-family: Tahoma,Arial,Helvetica,sans-serif;
+    line-height: 22px;
+}
+h1 {
+    font-size: 22px;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-align: center;
+}
+h2 {
+    font-size: 20px;
+    font-weight: normal;
+}
+.page {
+    display: flex;
+}
+nav {
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 10px;
+    width: 20%;
+}
+nav a {
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+}
+section {
+    padding: 10px;
+    width: 80%;
+}
+section>.article {
+    border-bottom: 1px solid #ddd;
+}
+.article-thumb-image img {
+    border: 1px solid #ddd;
+    height: 200px;
+    max-width: 90%;
+    margin-top: 20px;
+}
+.article-introtext {
+    margin: 20px 0;
+}
+.read-more {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.article-detail-image img {
+    border: 1px solid #ddd;
+    max-width: 90%;
+    margin-bottom: 20px;
+}
+.article-detail-text {
+    margin: 20px 0;
+}
+.pagination {
+    margin: 30px 0;
+    text-align: center;
+}
+.pagination a {
+    text-decoration: none;
+}
+.article-tags {
+    margin: 10px 0 30px;
+}
+.article-tags a {
+    background: #eee;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    color: #777;
+    margin: 0 5px;
+    padding: 4px 12px;
+    text-decoration: none;
+}
+.article-detail-tags {
+    margin: 20px 0 50px;
+}

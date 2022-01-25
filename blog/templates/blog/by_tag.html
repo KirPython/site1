@@ -1,0 +1,19 @@
+{% extends "blog/by_category.html" %}
+
+{% block title %}Статьи по тегу "{{ tag.name }}"{% endblock %}
+
+{% block header %}<h1>Статьи по тегу "{{ tag.name }}"</h1>{% endblock %}
+
+{% block pagination %}
+    {% if page.has_previous or page.has_next %}
+    <div class="pagination">
+        {% if page.has_previous %}
+            <a href="/blog/?tag={{ tag.id }}&page={{ page.previous_page_number }}">&lt;&lt;</a>&nbsp; &nbsp;
+        {% endif %}
+        стр.{{ page.number }} из {{ page.paginator.num_pages }}
+        {% if page.has_next %}
+            &nbsp;&nbsp;<a href="/blog/?tag={{ tag.id }}&page={{ page.next_page_number }}">&gt;&gt;</a>
+        {% endif %}
+    </div>
+    {% endif %}
+{% endblock %}
